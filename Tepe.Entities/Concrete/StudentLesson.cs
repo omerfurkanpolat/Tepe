@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using Tepe.Core.Entities;
@@ -8,6 +9,7 @@ namespace Tepe.Entities.Concrete
 {
     public class StudentLesson:IEntity
     {
+        [Key]
         public int StudentLessonId { get; set; }
 
         [ForeignKey("LessonId")]
@@ -16,7 +18,7 @@ namespace Tepe.Entities.Concrete
 
         [ForeignKey("Id")]
         public string Id { get; set; }
-        public Student Stundets { get; set; }
+        public Student Students { get; set; }
 
     }
 }

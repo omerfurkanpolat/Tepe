@@ -15,6 +15,11 @@ namespace Tepe.WebAPI.Controllers
     [ApiController]
     public class LessonController : ControllerBase
     {
+        /// <summary>
+        /// Bu alanı Rol bazlı şekilde admin veya öğretmen tipi kullanıcıların not girip  yönetimsel işlerin yapılacağı bir yapıda  kurmak istiyorum
+        // ama haftasonu da çalıştığım için yeterli vaktim olmadı.
+        /// </summary>
+       
         private readonly ILessonService _lessonService;
         private readonly ILessonStudentService _lessonStudentService;
         private readonly INoteService _noteService;

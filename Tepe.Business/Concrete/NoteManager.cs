@@ -23,7 +23,7 @@ namespace Tepe.Business.Concrete
 
         public List<Note> GetUserNoteByLessonId(string studentId, int lessonId)
         {
-            return _noteDal.GetList(x => x.Id == studentId && x.LessonId == lessonId);
+            return _noteDal.GetStudentNoteByLessonId(studentId, lessonId);
         }
     }
 }

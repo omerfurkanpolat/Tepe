@@ -49,18 +49,18 @@ namespace Tepe.WebAPI.Controllers
             }
             return BadRequest(Messages.StudentNotFound);
         }
-        [HttpPost("get-all-notes")]
-        public ActionResult GetAllExamNote()
-        {
-            return Ok();
-        }
-        [HttpPost("get-lesson-notes/{id}")]
-        public ActionResult GetNoteByLessonId(int id)
+       
+        [HttpPost("get-lesson-notes/{lessonId}")]
+        public ActionResult GetNoteByLessonId(int lessonId)
         {
             var studentId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var note = _noteService.GetUserNoteByLessonId(studentId, id).OrderBy(x=>x.NoteNumber);
-            
-            return Ok();
+            var note = _noteService.GetUserNoteByLessonId(studentId, lessonId);
+            if (note==null)
+            {
+                return BadRequest(Messages.NoteNotFound);
+            }           
+            var result = _mapper.Map<IEnumerable<NoteForReurnDTO>>(note);
+            return Ok(result);
         }
     }
 }

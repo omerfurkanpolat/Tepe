@@ -288,23 +288,25 @@ namespace Tepe.Dal.Migrations
 
             modelBuilder.Entity("Tepe.Entities.Concrete.StudentLesson", b =>
                 {
+                    b.Property<int>("StudentLessonId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
                     b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("LessonId")
                         .HasColumnType("int");
 
-                    b.Property<int>("StudentLessonId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("StundetsId")
+                    b.Property<string>("StudentsId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("Id");
+                    b.HasKey("StudentLessonId");
 
                     b.HasIndex("LessonId");
 
-                    b.HasIndex("StundetsId");
+                    b.HasIndex("StudentsId");
 
                     b.ToTable("StudentLessons");
                 });
@@ -394,13 +396,13 @@ namespace Tepe.Dal.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Tepe.Entities.Concrete.Student", "Stundets")
+                    b.HasOne("Tepe.Entities.Concrete.Student", "Students")
                         .WithMany()
-                        .HasForeignKey("StundetsId");
+                        .HasForeignKey("StudentsId");
 
                     b.Navigation("Lessons");
 
-                    b.Navigation("Stundets");
+                    b.Navigation("Students");
                 });
 
             modelBuilder.Entity("Tepe.Entities.Concrete.Lesson", b =>

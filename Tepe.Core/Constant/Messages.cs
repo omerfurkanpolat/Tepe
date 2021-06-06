@@ -9,5 +9,6 @@ namespace Tepe.Core.Constant
         public static string StudentNotFound = "Öğrenci Bulunamadı";
         public static string UsernameOrPasswordWrong = "Kullanıcı Adı veya Şifre Yanlış";
         public static string LessonNotFound = "Ders Bulunamadı";
+        public static string NoteNotFound = "Notlar Getirelemedi";
     }
 }

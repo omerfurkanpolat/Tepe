@@ -13,6 +13,8 @@ namespace Tepe.WebAPI.Utilities.Automapper
         public AutoMapperProfiles()
         {
             CreateMap<Student, StudentForReturnDTO>();
+            CreateMap<Note, NoteForReurnDTO>()
+                 .ForMember(dest => dest.LessonName, opt => opt.MapFrom(i => i.Lessons.LessonName));
         }
     }
 }

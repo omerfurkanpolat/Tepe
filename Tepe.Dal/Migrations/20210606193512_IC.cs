@@ -220,17 +220,18 @@ namespace Tepe.Dal.Migrations
                 name: "StudentLessons",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    StudentLessonId = table.Column<int>(type: "int", nullable: false),
+                    StudentLessonId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     LessonId = table.Column<int>(type: "int", nullable: false),
-                    StundetsId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    Id = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    StudentsId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_StudentLessons", x => x.Id);
+                    table.PrimaryKey("PK_StudentLessons", x => x.StudentLessonId);
                     table.ForeignKey(
-                        name: "FK_StudentLessons_AspNetUsers_StundetsId",
-                        column: x => x.StundetsId,
+                        name: "FK_StudentLessons_AspNetUsers_StudentsId",
+                        column: x => x.StudentsId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -297,9 +298,9 @@ namespace Tepe.Dal.Migrations
                 column: "LessonId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_StudentLessons_StundetsId",
+                name: "IX_StudentLessons_StudentsId",
                 table: "StudentLessons",
-                column: "StundetsId");
+                column: "StudentsId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

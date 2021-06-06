@@ -9,5 +9,7 @@ namespace Tepe.Dal.Abstract
     public interface INoteDal: IEntityRepository<Note>
     {
         List<Note> GetStudentNoteByLessonId(string studentId, int lessonId);
+
+       
     }
 }
