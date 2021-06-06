@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Tepe.Dal\Tepe.Dal.csproj" />
+    <ProjectReference Include="..\Tepe.Entities\Tepe.Entities.csproj" />
+  </ItemGroup>
+
+</Project>
